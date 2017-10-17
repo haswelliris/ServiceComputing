@@ -1,4 +1,4 @@
-# 作业 1 : selpg
+# 作业 1 : selpg 实验简单报告
 使用Go实现Linux命令行程序`selpg`
 ## 概述
 Go学习第一次代码作业，用Go语言实现命令行实用程序`selpg`。
@@ -21,6 +21,28 @@ Go学习第一次代码作业，用Go语言实现命令行实用程序`selpg`。
 ### 编译命令
 `go build selpg.go`
 ### 运行示例
-从文本中读入，输出第一页内容，每页十行  
-`./selpg.exe -s 1 -e 1 -l 10 < ./testFiles/readFile.txt` 
+1、从文本中读入，输出第一页内容，每页十行  
+`./selpg.exe -s 1 -e 1 -l 10 < ./testFiles/readFile.txt`   
+![test1](https://github.com/haswelliris/ServiceComputing/blob/master/Homework%201/pictures/1.jpg)  
+可见输出了前十行内容
 
+2、从文件中读入，输出第一页内容，用分页符判断是否翻页  
+`./selpg.exe -s 1 -e 1 -f < ./testFiles/readFile.txt`   
+![test2](https://github.com/haswelliris/ServiceComputing/blob/master/Homework%201/pictures/2.jpg)  
+因为该文档没有分页符，所以输出了全部内容
+
+3、从文本中读入，输出前两页内容，每页十行，输出到文件中  
+`./selpg.exe -s 1 -e 2 -l 10 < ./testFiles/readFile.txt > ./testFiles/output.txt`  
+![test3](https://github.com/haswelliris/ServiceComputing/blob/master/Homework%201/pictures/3.jpg)  
+可见已经输出了前20行内容到文件中 
+
+4、从标准输入中读入，输出第一页，每页3行，输出到标准输出
+`./selpg.exe -s 1 -e 1 -l 3`  
+![test4](https://github.com/haswelliris/ServiceComputing/blob/master/Homework%201/pictures/4.jpg)  
+图中1 2 3 出现了两次，分别是前三行的输入和输出。输入的4 5位于第三行之后，超过了需要输出范围，故没有输出。  
+
+5、从标准输入中读入，输出第一页，每页3行，输出到文本文件  
+`./selpg.exe -s 1 -e 1 -l 3 > ./testFiles/output.txt`  
+![test5](https://github.com/haswelliris/ServiceComputing/blob/master/Homework%201/pictures/5.jpg)  
+可见前三行1 2 3被输出到了文件中，而第三行之后的4 5因为超过了需要输出范围，所以没有输出。 
+## 更多实现细节[本次作业博客地址](https://www.asmodeus.cn/archives/507)
